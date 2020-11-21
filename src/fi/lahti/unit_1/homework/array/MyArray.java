@@ -7,6 +7,6 @@ import java.util.ArrayList;
 public class MyArray implements IArray<ArrayList<Integer>> {
     @Override
     public ArrayList setArrayList(int[] array) {
-         return new ArrayList<Integer>();
+        return  new ArrayList();
     }
 }

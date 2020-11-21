@@ -1,7 +1,6 @@
 package fi.lahti.unit_1.generic_hard.document;
 
-import fi.lahti.unit_1.generic_hard.document.DOM;
-import fi.lahti.unit_1.generic_hard.document.Document;
+//
 
 public abstract class MarkupDocument<S extends DOM, T> implements Document<T> {
     protected S structure;

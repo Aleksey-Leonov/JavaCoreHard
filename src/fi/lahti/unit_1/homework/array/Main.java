@@ -11,5 +11,8 @@ public class Main {
         int[] num = { 6, 7 };
         System.out.println(move.myMove(num));
 
+
+        
+
     }
 }

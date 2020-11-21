@@ -1,6 +1,5 @@
 package fi.lahti.unit_1.homework.array;
 
-import fi.lahti.unit_1.homework.array.IMove;
 
 import java.util.ArrayList;
 
