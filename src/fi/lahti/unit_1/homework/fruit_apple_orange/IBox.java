@@ -10,7 +10,7 @@ public interface IBox<T> {
    // void moveTo( T otherBox);
 
     // высчитывает вес коробки
-    int getWeight();
+    int getWeightBox();
 
     //позволяет сравнить текущую коробку с той,которую подадут в compare в качестве параметра, true - если их веса равны, false
     boolean compare(Box<? extends Fruit> otherBox);

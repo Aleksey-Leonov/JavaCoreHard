@@ -5,36 +5,37 @@ import java.util.List;
 
 public class Box<T extends Fruit> implements IBox<T> {
 
-private List<T>fruits;
+private List<T>boxFruits;
 
     public Box() {
-        fruits = new ArrayList<>();
+        boxFruits = new ArrayList<>();
     }
 
 
+    // добовление в box фруктов
     @Override
     public void add(T fruit) {
-        fruits.add(fruit);
+        boxFruits.add(fruit);
     }
 
     // переложить фрукты в другой ящик
     public void moveTo(Box<T> otherBox) {
-        fruits.forEach(fruit -> otherBox.add(fruit));
+        boxFruits.forEach(fruit -> otherBox.add(fruit));
     }
 
     // высчитывает вес коробки
     @Override
-    public int getWeight() {
-        int massa = 0;
-        for (Fruit f: fruits) {
-            massa += f.getMassa();
+    public int getWeightBox() {
+        int boxMassa = 0;
+        for (Fruit f: boxFruits) {
+            boxMassa += f.getMassa();
         }
-      return massa;
+      return boxMassa;
     }
 
     @Override
     public boolean compare(Box<? extends Fruit> otherBox) {
-        return otherBox.getWeight() == getWeight();
+        return otherBox.getWeightBox() == getWeightBox();
     }
 
 }
