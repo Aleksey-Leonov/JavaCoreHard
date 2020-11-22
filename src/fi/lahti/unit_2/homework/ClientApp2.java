@@ -1,4 +1,4 @@
-package fi.lahti.unit_2;
+package fi.lahti.unit_2.homework;
 import java.io.*;
 import java.net.Socket;
 

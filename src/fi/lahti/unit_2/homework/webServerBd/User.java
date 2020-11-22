@@ -1,4 +1,4 @@
-package fi.lahti.unit_2.webServerDb;
+package fi.lahti.unit_2.homework.webServerBd;
 
 public class User {
     private String nickname;

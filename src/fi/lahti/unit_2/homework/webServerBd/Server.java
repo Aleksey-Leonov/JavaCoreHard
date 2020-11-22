@@ -1,6 +1,8 @@
-package fi.lahti.unit_2.webServerDb;
+package fi.lahti.unit_2.homework.webServerBd;
 
 
+import fi.lahti.unit_2.homework.webServerBd.AuthenticationService;
+import fi.lahti.unit_2.homework.webServerBd.ClientHandler;
 
 public interface Server {
     void broadcastMessage(String message);
