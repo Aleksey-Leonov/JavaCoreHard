@@ -7,6 +7,8 @@ public class Kivi extends Fruit {
         super(maara, massa);
     }
 
+
+    @Override
     public int getMassa() {
         int fullMassa= maara * massa;
         return fullMassa;
