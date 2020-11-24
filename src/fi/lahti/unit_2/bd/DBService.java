@@ -4,15 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//1:39:46
+
 public class DBService {
     private DBService() {}
 
+    // конфигурирование драйвера
     public static Connection getConnection() {
         try {
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost:8889/warehouse",
+                    "jdbc:mysql://localhost:3306/warehouse?serverTimezone=Europe/Helsinki",
                     "root",
-                    "root"
+                    ""
             );
         } catch (SQLException throwables) {
             throw new RuntimeException("SWW during establishing DB connection", throwables);
