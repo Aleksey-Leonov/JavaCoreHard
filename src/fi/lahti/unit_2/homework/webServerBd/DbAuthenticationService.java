@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class DbAuthenticationService implements AuthenticationService {
 
-    Collection<User> dBusers;
+    ArrayList<User> dBusers;
 
     public Collection<User>findAll() {
 
