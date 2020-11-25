@@ -1,25 +1,19 @@
 package fi.lahti.unit_2.myDB;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
+
+//1:39:46
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // конфигурирование и подключение к БД
-        Connection connection;
+    UserService userService = new UserService();
+    User user = new User(0, "VoVa");
+  //   userService.save(user);
 
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/warehouse?serverTimezone=Europe/Helsinki",
-                    "admin",
-                    "admin"
-            );
+    System.out.println(userService.findAll());
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
 
     }
 }

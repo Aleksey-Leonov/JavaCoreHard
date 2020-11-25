@@ -17,7 +17,7 @@ public class ChatServer implements Server {
             System.out.println("Server is starting up...");
             ServerSocket serverSocket = new ServerSocket(8888);
             clients = new HashSet<>();
-            authenticationService = new BasicAuthenticationService();
+            authenticationService = new DbAuthenticationService();
             System.out.println("Server is started up...");
 
             while (true) {
