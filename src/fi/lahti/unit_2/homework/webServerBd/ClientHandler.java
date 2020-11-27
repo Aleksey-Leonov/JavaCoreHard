@@ -1,4 +1,4 @@
-package fi.lahti.unit_2.homework.webServerBd;
+package homework.webServerBd;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -60,7 +60,7 @@ public class ClientHandler {
                      */
                     String[] credentialValues = credentials.split("\\s");
                     server.getAuthenticationService()
-                            .doAuth(credentialValues[1], credentialValues[2])
+                            .findUserByEmailPassword(credentialValues[1], credentialValues[2])
                             .ifPresentOrElse(
                                     user -> {
                                         if (!server.isLoggedIn(user.getNickname())) {

@@ -18,7 +18,7 @@ public class UserService {
             //выполнение запроса
             Statement statement = connection.createStatement();
             //  statement.executeQuery получение данных
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM  myusers");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM  users");
 
             users = new ArrayList<>();
 
@@ -43,7 +43,7 @@ public class UserService {
 
 
 
-    /*
+
     // запись в БД
        public int save(User user) {
         Connection connection = DataBaseService.getConnection();
@@ -66,5 +66,5 @@ public class UserService {
 
     }
 
-     */
+
 }

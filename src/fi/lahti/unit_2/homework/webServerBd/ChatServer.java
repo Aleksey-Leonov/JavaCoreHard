@@ -1,6 +1,8 @@
-package fi.lahti.unit_2.homework.webServerBd;
+package homework.webServerBd;
 
 
+
+import homework.webServerBd.BD.DbUserService;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,9 +17,9 @@ public class ChatServer implements Server {
     public ChatServer() {
         try {
             System.out.println("Server is starting up...");
-            ServerSocket serverSocket = new ServerSocket(8888);
+            ServerSocket serverSocket = new ServerSocket(3906);
             clients = new HashSet<>();
-            authenticationService = new DbAuthenticationService();
+            authenticationService = new DbUserService();
             System.out.println("Server is started up...");
 
             while (true) {

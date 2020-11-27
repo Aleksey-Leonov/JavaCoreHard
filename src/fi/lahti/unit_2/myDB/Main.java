@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) {
 
     UserService userService = new UserService();
-    User user = new User(0, "VoVa");
-  //   userService.save(user);
+   // User user = new User(4, "VoVa");
+   // userService.save(user);
 
     System.out.println(userService.findAll());
 

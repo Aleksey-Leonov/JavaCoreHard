@@ -1,4 +1,4 @@
-package fi.lahti.unit_2.homework;
+package homework;
 
 import java.io.*;
 import java.net.Socket;
@@ -11,7 +11,7 @@ import java.net.Socket;
 public class ClientApp1 {
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 8888);
+            Socket socket = new Socket("localhost", 3906);
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 

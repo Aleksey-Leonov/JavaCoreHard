@@ -1,4 +1,5 @@
-package fi.lahti.unit_2.homework;
+package homework;
+import homework.webServerBd.ChatServer;
 
 /*
     1. Добавить в сетевой чат авторизацию через базу данных (SQLite или MySQL или PostgreSQL или H2).
@@ -6,10 +7,10 @@ package fi.lahti.unit_2.homework;
 
  */
 
-import fi.lahti.unit_2.homework.webServerBd.ChatServer;
-
 public class ServerApp {
     public static void main(String[] args) {
+
         new ChatServer();
+
     }
 }

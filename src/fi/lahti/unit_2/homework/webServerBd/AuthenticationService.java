@@ -1,9 +1,11 @@
-package fi.lahti.unit_2.homework.webServerBd;
+package homework.webServerBd;
 
 
+
+import homework.webServerBd.BD.User;
 
 import java.util.Optional;
 
 public interface AuthenticationService {
-    Optional<User> doAuth(String login, String password);
+    Optional<User> findUserByEmailPassword(String email, String password);
 }
