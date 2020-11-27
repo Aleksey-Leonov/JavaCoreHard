@@ -1,8 +1,7 @@
 package fi.lahti.unit_2.homework.webServerBd;
 
+import fi.lahti.unit_2.homework.webServerBd.BD.DbUserService;
 
-
-import homework.webServerBd.BD.DbUserService;
 
 import java.io.IOException;
 import java.net.ServerSocket;

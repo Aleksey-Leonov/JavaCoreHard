@@ -1,9 +1,13 @@
 package fi.lahti.unit_2.homework.webServerBd.BD;
-import homework.webServerBd.AuthenticationService;
 
-import java.sql.*;
+
+import fi.lahti.unit_2.homework.webServerBd.AuthenticationService;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Optional;
-
 
 /**
  * Input credentials sample
