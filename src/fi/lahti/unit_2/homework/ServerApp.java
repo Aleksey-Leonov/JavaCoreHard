@@ -9,6 +9,6 @@ public class ServerApp {
     {
         DbUserService db = new DbUserService();
         System.out.println(db.findUserByEmailPassword("n1@mail.com", "1"));
-        new ChatServer();
+        // new ChatServer();
     }
 }

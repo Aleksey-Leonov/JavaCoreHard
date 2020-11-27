@@ -35,7 +35,7 @@ public class DbUserService implements AuthenticationService {
 
             }
 
-            return null;
+            return Optional.of(null);
 
 
         } catch (SQLException throwables) {
