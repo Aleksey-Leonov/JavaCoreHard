@@ -1,4 +1,4 @@
-package fi.lahti.unit_2.homework.webServerBd.BD;
+package fi.lahti.unit_2.homework.DB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

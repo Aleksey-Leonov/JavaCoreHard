@@ -1,25 +1,14 @@
 package fi.lahti.unit_2.homework;
 
+import fi.lahti.unit_2.homework.DB.DbUserService;
+import fi.lahti.unit_2.homework.chatServer.ChatServer;
 
-/*
-    1. Добавить в сетевой чат авторизацию через базу данных (SQLite или MySQL или PostgreSQL или H2).
-    2.*Добавить в сетевой чат возможность смены ника.
-
- */
-
-/*
-1. Создать логгер локальной истории в текстовый файл. Считываем данные введенные из консоли и добавляем в файл с новой строки.
-2. После загрузки клиента показывать ему последние 100 строк чата.
-3. * Не использовать сканер в процессе считывания данных из консоли
-
- */
-
-import fi.lahti.unit_2.homework.webServerBd.ChatServer;
 
 public class ServerApp {
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
+        DbUserService db = new DbUserService();
+        System.out.println(db.findUserByEmailPassword("n1@mail.com", "1"));
         new ChatServer();
-
     }
 }

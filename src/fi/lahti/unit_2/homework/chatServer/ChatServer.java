@@ -1,7 +1,6 @@
-package fi.lahti.unit_2.homework.webServerBd;
+package fi.lahti.unit_2.homework.chatServer;
 
-import fi.lahti.unit_2.homework.webServerBd.BD.DbUserService;
-
+import fi.lahti.unit_2.homework.DB.AuthenticationService;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -16,9 +15,9 @@ public class ChatServer implements Server {
     public ChatServer() {
         try {
             System.out.println("Server is starting up...");
-            ServerSocket serverSocket = new ServerSocket(3906);
+            ServerSocket serverSocket = new ServerSocket(8888);
             clients = new HashSet<>();
-            authenticationService = new DbUserService();
+           // authenticationService = new BasicAuthenticationService();
             System.out.println("Server is started up...");
 
             while (true) {
@@ -38,19 +37,20 @@ public class ChatServer implements Server {
     }
 
     @Override
-    public synchronized boolean isLoggedIn(String nickname) {
-        return clients.stream()
-                .filter(clientHandler -> clientHandler.getName().equals(nickname))
-                .findFirst()
-                .isPresent();
-    }
-
     public synchronized void sendPrivateMessage(String from, String name, String privateMessage) {
         for (ClientHandler client : clients) {
             if (client.getName().equals(name)) {
                 client.sendMessage(from + ": (private) " + privateMessage);
             }
         }
+    }
+
+    @Override
+    public synchronized boolean isLoggedIn(String nickname) {
+        return clients.stream()
+                .filter(clientHandler -> clientHandler.getName().equals(nickname))
+                .findFirst()
+                .isPresent();
     }
 
     @Override
@@ -66,5 +66,10 @@ public class ChatServer implements Server {
     @Override
     public AuthenticationService getAuthenticationService() {
         return authenticationService;
+    }
+
+    @Override
+    public Set<ClientHandler> getClients() {
+        return clients;
     }
 }

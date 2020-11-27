@@ -1,11 +1,11 @@
-package fi.lahti.unit_2.homework.webServerBd;
+package fi.lahti.unit_2.homework.chatServer;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ClientHandler {
     private Server server;
@@ -13,6 +13,7 @@ public class ClientHandler {
     private DataInputStream in;
     private DataOutputStream out;
     private String name;
+    private boolean authCheck = false;
 
     public ClientHandler(Server server, Socket socket) {
         try {
@@ -31,24 +32,27 @@ public class ClientHandler {
         return name;
     }
 
-    private void doListen() {
+    private synchronized void doListen() {
         new Thread(() -> {
             try {
                 doAuth();
                 receiveMessage();
+            } catch (SocketTimeoutException e) {
+                sendMessage("Auth out of time");
             } catch (Exception e) {
                 throw new RuntimeException("SWW", e);
             } finally {
+                sendMessage("Client " + this.name + " is logged out");
                 server.unsubscribe(this);
             }
         }).start();
     }
 
-    private void doAuth() {
+    private void doAuth() throws SocketTimeoutException {
         try {
+            socket.setSoTimeout(120000);
             while (true) {
                 String credentials = in.readUTF();
-                AtomicBoolean isAuth = new AtomicBoolean(false);
                 /**
                  * Input credentials sample
                  * "-auth n1@mail.com 1"
@@ -59,6 +63,7 @@ public class ClientHandler {
                      * array of ["-auth", "n1@mail.com", "1"]
                      */
                     String[] credentialValues = credentials.split("\\s");
+
                     server.getAuthenticationService()
                             .findUserByEmailPassword(credentialValues[1], credentialValues[2])
                             .ifPresentOrElse(
@@ -68,7 +73,7 @@ public class ClientHandler {
                                             name = user.getNickname();
                                             server.broadcastMessage(name + " is logged in.");
                                             server.subscribe(this);
-                                            isAuth.set(true);
+                                            authCheck = true;
                                         } else {
                                             sendMessage("Current user is already logged in.");
                                         }
@@ -80,11 +85,16 @@ public class ClientHandler {
                                         }
                                     }
                             );
+                    if (authCheck) {
+                        socket.setSoTimeout(0);
+                        return;
+                    }
                 }
-                if (isAuth.get()) {
-                    break;
-                }
+                sendMessage("Authorize before using chat");
             }
+
+        } catch (SocketTimeoutException e) {
+            throw e;
         } catch (IOException e) {
             throw new RuntimeException("SWW", e);
         }
@@ -93,15 +103,26 @@ public class ClientHandler {
     /**
      * Receives input data from {@link ClientHandler#in} and then broadcast via {@link Server#broadcastMessage(String)}
      */
-    private void receiveMessage() {
+    private void receiveMessage() throws SocketTimeoutException {
         try {
             while (true) {
                 String message = in.readUTF();
-                if (message.equals("-exit")) {
+                /**
+                 * Input privateMessage sample
+                 * "-w n1 hello"
+                 */
+                if (message.startsWith("-w")) {
+                    String[] privateMessage = message.split("\\s");
+                    server.sendPrivateMessage(this.name, privateMessage[1], privateMessage[2]);
+                } else if (message.equals("-exit")) {
                     return;
+                } else {
+                    message = (name + ": " + message);
+                    server.broadcastMessage(message);
                 }
-                server.broadcastMessage(message);
             }
+        } catch (SocketTimeoutException e) {
+            throw e;
         } catch (IOException e) {
             throw new RuntimeException("SWW", e);
         }
