@@ -18,7 +18,7 @@ import java.util.Optional;
 public class DbUserService implements AuthenticationService {
         // подключение к БД
 
-        ArrayList<User> dbUser;
+        ArrayList<User> dbUser = new ArrayList<>();
 
     public Optional<User> findUserByEmailPassword(String email, String password){
 

@@ -2,6 +2,7 @@ package fi.lahti.unit_2.homework;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Date;
 
 /**
  * Input credentials sample
@@ -22,7 +23,6 @@ public class ClientApp1 {
                     while (true) {
                         String message = in.readUTF();
 
-
                         System.out.println(" in MSN ....."+ message);
                     }
                 } catch (IOException e) {
@@ -30,13 +30,14 @@ public class ClientApp1 {
                 }
             }).start();
 
+            doFileReaderDemo();
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             while (true) {
                 try {
                     System.out.println("...");
                     String s = reader.readLine();
 
-                     mSnReg(s);
+                     logger(s);
 
                     out.writeUTF(s);
 
@@ -50,10 +51,51 @@ public class ClientApp1 {
         }
     }
 
-    private static void mSnReg(String msn) {
+    private static void logger(String msn) {
+        try {
+            BufferedWriter bw = new BufferedWriter(
+                    new FileWriter(
+                            new File("C:/Users/Sipmsons/Desktop/JAVA/GeekBrains/JavaCoreHard/src/fi/lahti/unit_2/homework/webServerBd/Log/log.text"),
+                            true
+                    )
+            );
+
+            bw.newLine();
+            bw.write(
+                    String.format(
+                            "[Logger] %s: " + msn,
+                            new Date()
+                    )
+            );
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
+    static void doFileReaderDemo() {
+        try {
+            BufferedReader br = new BufferedReader(
+                    new FileReader(
+                            new File("C:/Users/Sipmsons/Desktop/JAVA/GeekBrains/JavaCoreHard/src/fi/lahti/unit_2/homework/webServerBd/Log/log.text")
+                    )
+            );
+
+//            String line;
+//            while((line = br.readLine()) != null) {
+//                System.out.println(line);
+//            }
+
+
+            br.lines().forEach(line -> {
+                System.out.println(line);
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
