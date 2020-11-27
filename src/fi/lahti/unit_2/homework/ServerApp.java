@@ -1,4 +1,4 @@
-package homework;
+package fi.lahti.unit_2.homework;
 import homework.webServerBd.ChatServer;
 
 /*
