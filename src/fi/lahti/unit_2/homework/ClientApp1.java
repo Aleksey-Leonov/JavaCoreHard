@@ -9,7 +9,9 @@ import java.net.Socket;
  */
 
 public class ClientApp1 {
+
     public static void main(String[] args) {
+
         try {
             Socket socket = new Socket("localhost", 3906);
             DataInputStream in = new DataInputStream(socket.getInputStream());
@@ -19,7 +21,9 @@ public class ClientApp1 {
                 try {
                     while (true) {
                         String message = in.readUTF();
-                        System.out.println(message);
+
+
+                        System.out.println(" in MSN ....."+ message);
                     }
                 } catch (IOException e) {
                     throw new RuntimeException("SWW", e);
@@ -30,8 +34,14 @@ public class ClientApp1 {
             while (true) {
                 try {
                     System.out.println("...");
-                    out.writeUTF(reader.readLine());
-                } catch (IOException e) {
+                    String s = reader.readLine();
+
+                     mSnReg(s);
+
+                    out.writeUTF(s);
+
+
+                  } catch (IOException e) {
                     throw new RuntimeException("SWW", e);
                 }
             }
@@ -39,5 +49,12 @@ public class ClientApp1 {
             e.printStackTrace();
         }
     }
+
+    private static void mSnReg(String msn) {
+
+    }
+
+
+
 
 }
