@@ -5,7 +5,6 @@ import fi.lahti.unit_2.homework.DB.AuthenticationService;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashSet;
 import java.util.Set;
 
 public class ChatServer implements Server {
@@ -16,8 +15,6 @@ public class ChatServer implements Server {
         try {
             System.out.println("Server is starting up...");
             ServerSocket serverSocket = new ServerSocket(8888);
-            clients = new HashSet<>();
-           // authenticationService = new BasicAuthenticationService();
             System.out.println("Server is started up...");
 
             while (true) {

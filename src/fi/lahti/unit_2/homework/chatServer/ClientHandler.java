@@ -1,11 +1,20 @@
 package fi.lahti.unit_2.homework.chatServer;
 
+import fi.lahti.unit_2.homework.DB.User;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Objects;
+
+
+/**
+ * Input credentials sample
+ * "-auth n1@mail.com 1"
+ */
+
 
 public class ClientHandler {
     private Server server;
@@ -48,20 +57,15 @@ public class ClientHandler {
         }).start();
     }
 
-    private void doAuth() throws SocketTimeoutException {
+    /*
+    private void doAuth() {
         try {
-            socket.setSoTimeout(120000);
+
             while (true) {
                 String credentials = in.readUTF();
-                /**
-                 * Input credentials sample
-                 * "-auth n1@mail.com 1"
-                 */
+
                 if (credentials.startsWith("-auth")) {
-                    /**
-                     * After splitting sample
-                     * array of ["-auth", "n1@mail.com", "1"]
-                     */
+
                     String[] credentialValues = credentials.split("\\s");
 
                     server.getAuthenticationService()
@@ -93,12 +97,45 @@ public class ClientHandler {
                 sendMessage("Authorize before using chat");
             }
 
-        } catch (SocketTimeoutException e) {
-            throw e;
         } catch (IOException e) {
             throw new RuntimeException("SWW", e);
         }
     }
+
+     */
+    private void doAuth()  {
+        try {
+
+            while (true) {
+                String str = in.readUTF();
+
+                if (str.startsWith("-auth")) {
+
+                    String[] pars = str.split("\\s");
+                    User nick = server.getAuthenticationService().findUserByEmailPassword(pars[1], pars[2]);
+
+                    if (nick == null) {
+                        if (!server.isLoggedIn(nick.getNickname())) {
+                            sendMessage("cmd auth: Status OK");
+                            name = nick.getNickname();
+                            server.broadcastMessage(name + " is logged in.");
+                            server.subscribe(this);
+
+                        }else {
+                            sendMessage("Current user is already logged in (учётная запись уже используется). ");
+                        }
+                    }
+                }
+
+                sendMessage("Authorize before using chat");
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("SWW", e);
+        }
+
+    }
+
 
     /**
      * Receives input data from {@link ClientHandler#in} and then broadcast via {@link Server#broadcastMessage(String)}

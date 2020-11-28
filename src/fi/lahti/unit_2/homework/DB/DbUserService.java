@@ -12,7 +12,7 @@ public class DbUserService implements AuthenticationService {
          // подключение к БД
 
     @Override
-    public Optional <User> findUserByEmailPassword(String email, String password){
+    public User findUserByEmailPassword(String email, String password){
         //выполнение запроса
         Connection connection = DataBaseConnection.getConnection();
         try {
@@ -26,16 +26,16 @@ public class DbUserService implements AuthenticationService {
             ResultSet rs = statement.executeQuery();
 
             if(rs.next()){
-               return Optional.of(new User(
+               return new User(
                        rs.getString("nickname"),
                        rs.getString("email"),
                        rs.getString("password")
 
-               ));
+                       );
 
             }
 
-            return Optional.of(null);
+            return null;
 
 
         } catch (SQLException throwables) {
