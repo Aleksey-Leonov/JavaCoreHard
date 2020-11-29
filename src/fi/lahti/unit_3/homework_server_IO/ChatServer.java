@@ -1,4 +1,4 @@
-package homework_server;
+package fi.lahti.unit_3.homework_server_IO;
 
 import java.io.IOException;
 import java.net.ServerSocket;

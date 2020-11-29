@@ -1,4 +1,4 @@
-package homework_server.DB;
+package fi.lahti.unit_3.homework_server_IO.DB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

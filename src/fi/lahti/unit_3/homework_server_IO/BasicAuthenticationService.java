@@ -1,7 +1,8 @@
-package homework_server;
+package fi.lahti.unit_3.homework_server_IO;
 
-import homework_server.DB.DBService;
-import homework_server.DB.User;
+
+import fi.lahti.unit_3.homework_server_IO.DB.DBService;
+import fi.lahti.unit_3.homework_server_IO.DB.User;
 
 import java.util.Optional;
 
