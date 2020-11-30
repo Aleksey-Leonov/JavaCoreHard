@@ -22,7 +22,7 @@ public class DBConnection {
         }
     }
 
-    public static void closs(Connection connection) {
+    public static void close(Connection connection) {
 
         try {
             connection.close();

@@ -6,9 +6,6 @@ public class DBService implements DataBaseCommands<User>{
     private boolean isChangeSuccessful;
 
 
-
-
-
     @Override
     public User findUser(String authEmail) {
 
@@ -37,7 +34,9 @@ public class DBService implements DataBaseCommands<User>{
         } catch (SQLException e) {
             throw new RuntimeException("SWW during find user operation", e);
 
-        }
+        } finally {
+        DBConnection.close(connection);
+    }
 
     }
 
@@ -49,7 +48,7 @@ public class DBService implements DataBaseCommands<User>{
             boolean passCheck = false;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users " +
-                    "WHERE nickname = '" + oldNickName +"';");
+                    "WHERE nickname = '" + oldNickName + "';");
             while (resultSet.next()) {
                 passCheck = password.equals(resultSet.getString("password"));
             }
@@ -72,6 +71,8 @@ public class DBService implements DataBaseCommands<User>{
         } catch (SQLException e) {
             throw new RuntimeException("SWW during change nickname operation", e);
 
+        } finally {
+            DBConnection.close(connection);
         }
     }
 

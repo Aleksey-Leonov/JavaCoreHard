@@ -37,6 +37,8 @@ public class DBService implements DataBaseCommands<User>{
         } catch (SQLException e) {
             throw new RuntimeException("SWW during find user operation", e);
 
+        }finally {
+            DBConnection.close(connection);
         }
 
     }
@@ -72,6 +74,8 @@ public class DBService implements DataBaseCommands<User>{
         } catch (SQLException e) {
             throw new RuntimeException("SWW during change nickname operation", e);
 
+        }finally {
+            DBConnection.close(connection);
         }
     }
 
