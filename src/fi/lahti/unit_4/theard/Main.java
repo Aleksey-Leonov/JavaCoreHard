@@ -1,9 +1,5 @@
 package fi.lahti.unit_4.theard;
 
-import fi.lahti.unit_4.theard.Packet;
-import fi.lahti.unit_4.theard.Receiver;
-import fi.lahti.unit_4.theard.Transmitter;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

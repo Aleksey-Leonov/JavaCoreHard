@@ -13,7 +13,7 @@ import java.net.Socket;
 public class ClientApp {
     public static void main(String[] args) {
         System.out.println("Ваш прошлый час ");
-        Masseger.printLastNLinesSecond(100);
+       // Masseger.printLastNLinesSecond(100);
 
         try {
             Socket socket = new Socket("localhost", 8888);
@@ -39,9 +39,7 @@ public class ClientApp {
                     System.out.println("MSN ...");
                     String msn = reader.readLine();
                     out.writeUTF(msn);
-
-
-                    Masseger.FileWriterMsn(msn);
+                  //  Masseger.FileWriterMsn(msn);
 
                 } catch (IOException e) {
                     throw new RuntimeException("SWW", e);
