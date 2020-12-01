@@ -18,10 +18,12 @@ public class WorkMain {
 
          ExecutorService executorService = Executors.newFixedThreadPool(3);
 
-         for(int i = 0; i < 5; i++) {
+
+          for(int i = 0; i < 5; i++) {
              executorService.submit(transmitter); // ДАННЫЕ
              executorService.submit(receiver);   // ПОЛУЧАТЕЛЬ ИНФОРМАЦИИ
              executorService.submit(receiver1);  // ПОЛУЧАТЕЛЬ ИНФОРМАЦИИ
+
          }
 
           /*
