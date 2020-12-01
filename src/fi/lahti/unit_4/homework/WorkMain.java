@@ -3,6 +3,11 @@ package fi.lahti.unit_4.homework;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/*
+    Создать три потока, каждый из которых выводит определенную букву (A, B и C)
+    5 раз (порядок – ABСABСABС). Используйте wait/notify/notifyAll.
+*/
+
 public class WorkMain {
     public static void main(String[] args) {
 
