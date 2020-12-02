@@ -1,8 +1,9 @@
-package fi.lahti.unit_4.theard;
+package fi.lahti.unit_4.theardV1;
 
 public class Packet {
     private String data;
     private boolean isTransfer = true;
+
 
     public synchronized void transmit(String data) {
         System.out.println(String.format("[%s] Transmit preparation...", Thread.currentThread().getName()));
@@ -42,4 +43,5 @@ public class Packet {
 
         return data;
     }
+  
 }

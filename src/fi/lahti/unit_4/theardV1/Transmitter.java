@@ -1,4 +1,4 @@
-package fi.lahti.unit_4.theard;
+package fi.lahti.unit_4.theardV1;
 
 public class Transmitter implements Runnable {
     private Packet packet;
