@@ -1,9 +1,10 @@
 package fi.lahti.unit_4.theardV1;
 
+//ПОЛУЧАТЕЛЬ
 public class Receiver implements Runnable {
-    private Packet packet;
+    private Synchroniz packet;
 
-    public Receiver(Packet packet) {
+    public Receiver(Synchroniz packet) {
         this.packet = packet;
     }
 

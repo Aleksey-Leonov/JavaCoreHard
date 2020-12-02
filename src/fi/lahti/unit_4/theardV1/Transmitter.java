@@ -1,10 +1,11 @@
 package fi.lahti.unit_4.theardV1;
 
+//ОТПРОВИТЕЛЬ
 public class Transmitter implements Runnable {
-    private Packet packet;
+    private Synchroniz packet;
     private String[] data;
 
-    public Transmitter(Packet packet) {
+    public Transmitter(Synchroniz packet) {
         this.packet = packet;
         data = new String[]{
                 "Hello, world",
