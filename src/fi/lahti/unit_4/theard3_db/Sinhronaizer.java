@@ -1,4 +1,4 @@
-package fi.lahti.unit_4.db_3_theard;
+package fi.lahti.unit_4.theard3_db;
 
 // class ОЧЕРЕДНОСТИ ДОСТУПА К ИНФОРМАЦИИ
 public class Sinhronaizer {
