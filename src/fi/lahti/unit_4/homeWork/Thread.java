@@ -1,4 +1,4 @@
-package fi.lahti.unit_4.homeWork_v2;
+package fi.lahti.unit_4.homeWork;
 
 public abstract class Thread {
     protected String nime;
