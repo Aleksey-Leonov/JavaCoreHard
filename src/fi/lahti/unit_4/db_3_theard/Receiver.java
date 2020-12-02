@@ -1,4 +1,4 @@
-package fi.lahti.unit_4.homework;
+package fi.lahti.unit_4.db_3_theard;
 
 
 // ПОЛУЧАТЕЛЬ ИНФОРМАЦИИ
