@@ -17,6 +17,7 @@ public class Track extends Transport {
 
             }
             float doRefuel = fuelStaion.fuelStantionDoRefuel((size - capasity));
+            capasity = doRefuel;
 
             if (doRefuel != 0F) {
                 System.out.println("Заправились, едим дальше " + name);

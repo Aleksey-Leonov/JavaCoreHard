@@ -44,15 +44,13 @@ public class Main {
 		Track track3 = new Track("T0045",60,15,60, fuelStaion);
 
 
-		ExecutorService executorService = Executors.newFixedThreadPool(3);
+		ExecutorService executorService = Executors.newFixedThreadPool(10);
 
      	executorService.submit(car1);
 	    executorService.submit(car2);
 	    executorService.submit(car3);
 
-
-
-	    executorService.submit(bus1);
+	   executorService.submit(bus1);
 		executorService.submit(bus2);
 		executorService.submit(bus3);
 
@@ -64,8 +62,6 @@ public class Main {
 	    executorService.submit(track2);
 	    executorService.submit(track3);
 		executorService.submit(track1);
-
-
 
 		executorService.shutdown();
 
