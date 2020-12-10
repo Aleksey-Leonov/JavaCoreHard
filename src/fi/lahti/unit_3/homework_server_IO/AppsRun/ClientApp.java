@@ -1,7 +1,5 @@
 package fi.lahti.unit_3.homework_server_IO.AppsRun;
 
-import fi.lahti.unit_3.homework_server_IO.IO.Masseger;
-
 import java.io.*;
 import java.net.Socket;
 

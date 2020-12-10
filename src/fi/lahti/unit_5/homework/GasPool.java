@@ -6,8 +6,8 @@ public class GasPool {
 
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
-     //количество топлива в баке
-    private float GasPoolCapacity = 500F;
+     //количество топлива в заправочной цистерне
+    private float GasPoolCapacity = 200F;
 
     public float getGasPoolCapacity() {
         return GasPoolCapacity;
@@ -17,29 +17,30 @@ public class GasPool {
       //  2. GasPool потоко небезопасный. Несколько потоков одновременно зайдут с сломают значение.
 
 
-    // баллон с топливом
-    public float gasPoolReqest(float amount){
+    public float requestFuel(float fuelAmount) {
         lock.writeLock().lock();
-        try {
 
-            if(amount > GasPoolCapacity){
-                System.out.println(" MSD -> GasPool: Топливо закончилось.....");
-                return 0F;
-            }
+        if(fuelAmount > GasPoolCapacity){
+            System.out.println(" MSD -> GasPool: Нет в наличие столько топлива.....");
+            return 0F;
+        }
 
-            GasPoolCapacity -= amount;
-            Thread.sleep(100);
-            return amount;
+        GasPoolCapacity -= fuelAmount;
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
         lock.writeLock().unlock();
+
+        return fuelAmount;
     }
 
-        return 0F;
+
+    // баллон с топливом
+    public float info (){
+
+        lock.writeLock().lock();
+        float s = GasPoolCapacity;
+        lock.writeLock().unlock();
+
+        return s;
     }
-
-
 
 }

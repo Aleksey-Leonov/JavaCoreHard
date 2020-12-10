@@ -5,10 +5,6 @@ import java.sql.*;
 public class DBService implements DataBaseCommands<User>{
     private boolean isChangeSuccessful;
 
-
-
-
-
     @Override
     public User findUser(String authEmail) {
 

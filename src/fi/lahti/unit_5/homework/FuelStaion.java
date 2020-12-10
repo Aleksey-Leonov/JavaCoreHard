@@ -27,22 +27,21 @@ public class FuelStaion {
             float W = 0;
         try {
             semaphore.acquire();
-            W = gasPool.gasPoolReqest(amount); // подключение к баллону с топливом
 
-            System.out.println(" MSD-> FuelStaion: идёт заправка ") ;
-            Thread.sleep(5000);
-
-
-            if(gasPool.getGasPoolCapacity() == 0) {
+            if(amount > gasPool.info()) {
                 System.out.println("MSD-> FuelStaion: На станции закончился бензин ");
                 return 0;
             }
+
+            W = gasPool.requestFuel(amount); // подключение к баллону с топливом
+            System.out.println(" MSD-> FuelStaion: идёт заправка ") ;
+            Thread.sleep(5000);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }finally {
                 semaphore.release(); // отключение баллона с топливом
-                System.out.println("MSD-> FuelStaion: FREE (колонко свободная) , на станции осталось топлива " + gasPool.getGasPoolCapacity() + " L");
+                System.out.println("MSD-> FuelStaion: FREE (колонко свободная) , на станции осталось топлива " + gasPool.info() + " L");
             }
 
         return W;

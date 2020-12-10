@@ -5,26 +5,22 @@ public abstract class Transport implements Runnable{
     protected String name;
 
     // это объем бака
-    protected float sizeC;
+    protected float size;
 
     // расход топливо
     protected float consuption;
 
     //F - фактическое состояние бака
-    protected float capasityF;
+    protected float capasity;
 
     protected FuelStaion fuelStaion;
 
-    protected float refuel;
 
-
-    public Transport(String name, float sizeC, float consuption, float capasityF, FuelStaion fuelStaion) {
+    public Transport(String name, float size, float consuption, float capasity, FuelStaion fuelStaion) {
         this.name = name;
-        this.fuelStaion = fuelStaion;
-        this.sizeC = sizeC;
+        this.size = size;
         this.consuption = consuption;
-        this.capasityF = capasityF;
+        this.capasity = capasity;
+        this.fuelStaion = fuelStaion;
     }
-
-
 }
