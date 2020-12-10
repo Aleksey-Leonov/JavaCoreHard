@@ -19,7 +19,6 @@ public class Car extends Transport  {
 
             }
             float doRefuel = fuelStaion.fuelStantionDoRefuel((size - capasity));
-
             capasity = doRefuel;
 
             if (doRefuel != 0F) {

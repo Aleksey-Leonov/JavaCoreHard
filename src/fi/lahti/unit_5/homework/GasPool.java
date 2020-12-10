@@ -21,26 +21,23 @@ public class GasPool {
         lock.writeLock().lock();
 
         if(fuelAmount > GasPoolCapacity){
-            System.out.println(" MSD -> GasPool: Нет в наличие столько топлива.....");
+            System.out.println("На станции нет  в наличие столько топлива.....");
             return 0F;
         }
 
         GasPoolCapacity -= fuelAmount;
-
         lock.writeLock().unlock();
-
         return fuelAmount;
     }
 
-
     // баллон с топливом
-    public float info (){
+   public void info (){
 
         lock.writeLock().lock();
-        float s = GasPoolCapacity;
+        System.out.println("Остаток топлива на станции " + GasPoolCapacity );
         lock.writeLock().unlock();
 
-        return s;
+
     }
 
 }
