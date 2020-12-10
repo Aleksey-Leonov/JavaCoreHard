@@ -1,7 +1,8 @@
 package fi.lahti.unit_5.homework;
 
-public class Car extends Transport  {
 
+
+public class Car extends Transport  {
 
     public Car(String name, float size, float consuption, float capasityF, FuelStaion fuelStaion) {
         super(name, size, consuption, capasityF, fuelStaion);
@@ -18,6 +19,7 @@ public class Car extends Transport  {
                 System.out.println("MSD -> " + name + " топливо в баке ... "  + capasity);
 
             }
+
             float doRefuel = fuelStaion.fuelStantionDoRefuel((size - capasity));
             capasity = doRefuel;
 

@@ -18,15 +18,16 @@ public class GasPool {
 
 
     public float requestFuel(float fuelAmount) {
-        lock.writeLock().lock();
 
-        if(fuelAmount > GasPoolCapacity){
+            if(fuelAmount > GasPoolCapacity){
             System.out.println("На станции нет  в наличие столько топлива.....");
             return 0F;
         }
 
+        lock.writeLock().lock();
         GasPoolCapacity -= fuelAmount;
         lock.writeLock().unlock();
+
         return fuelAmount;
     }
 

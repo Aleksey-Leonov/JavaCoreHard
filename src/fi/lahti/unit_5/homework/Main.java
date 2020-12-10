@@ -50,7 +50,8 @@ public class Main {
 	    executorService.submit(car2);
 	    executorService.submit(car3);
 
-	   executorService.submit(bus1);
+
+	    executorService.submit(bus1);
 		executorService.submit(bus2);
 		executorService.submit(bus3);
 
@@ -62,6 +63,7 @@ public class Main {
 	    executorService.submit(track2);
 	    executorService.submit(track3);
 		executorService.submit(track1);
+
 
 
 		executorService.shutdown();

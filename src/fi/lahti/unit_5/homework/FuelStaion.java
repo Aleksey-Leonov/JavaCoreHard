@@ -8,12 +8,15 @@ package fi.lahti.unit_5.homework;
  */
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class FuelStaion {
 
+    private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+
     private Semaphore semaphore;
     private GasPool gasPool;
-
+    private float W;
 
     public FuelStaion(Semaphore semaphore, GasPool gasPool) {
         this.gasPool = gasPool;
@@ -24,12 +27,15 @@ public class FuelStaion {
 
     // заправочная станция
     public float fuelStantionDoRefuel(float amount){
-            float W = 0;
-        try {
+           try {
             semaphore.acquire();
 
             if(amount < gasPool.getGasPoolCapacity()) {
+
+                lock.writeLock().lock();
                 W = gasPool.requestFuel(amount); // подключение к баллону с топливом
+                lock.writeLock().unlock();
+
                 System.out.println("Идёт заправка ");
                 Thread.sleep(5000);
                 gasPool.info();
