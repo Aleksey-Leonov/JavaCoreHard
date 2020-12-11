@@ -31,11 +31,7 @@ public class FuelStaion {
             semaphore.acquire();
 
             if(amount < gasPool.getGasPoolCapacity()) {
-
-
                 W = gasPool.requestFuel(amount); // подключение к баллону с топливом
-
-
                 System.out.println("Идёт заправка ");
                 Thread.sleep(5000);
                 gasPool.info();
