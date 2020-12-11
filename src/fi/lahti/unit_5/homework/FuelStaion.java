@@ -32,9 +32,9 @@ public class FuelStaion {
 
             if(amount < gasPool.getGasPoolCapacity()) {
 
-                lock.writeLock().lock();
+
                 W = gasPool.requestFuel(amount); // подключение к баллону с топливом
-                lock.writeLock().unlock();
+
 
                 System.out.println("Идёт заправка ");
                 Thread.sleep(5000);

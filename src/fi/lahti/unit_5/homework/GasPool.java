@@ -18,26 +18,29 @@ public class GasPool {
 
 
     public float requestFuel(float fuelAmount) {
+            lock.writeLock().lock();
+        try {
+              if(fuelAmount > GasPoolCapacity){
+                System.out.println("На станции нет  в наличие столько топлива.....");
+                return 0F;
+              }
 
-            if(fuelAmount > GasPoolCapacity){
-            System.out.println("На станции нет  в наличие столько топлива.....");
-            return 0F;
-        }
+            GasPoolCapacity -= fuelAmount;
+            return fuelAmount;
 
-        lock.writeLock().lock();
-        GasPoolCapacity -= fuelAmount;
-        lock.writeLock().unlock();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }finally {
+                lock.writeLock().unlock();
+            }
 
-        return fuelAmount;
+        return 0F;
     }
-
     // баллон с топливом
    public void info (){
-
         lock.writeLock().lock();
         System.out.println("Остаток топлива на станции " + GasPoolCapacity );
         lock.writeLock().unlock();
-
 
     }
 
